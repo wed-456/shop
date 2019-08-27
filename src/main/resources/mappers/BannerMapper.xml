@@ -3,7 +3,7 @@
 <mapper namespace="com.group.miShop.mapper.BannerMapper">
 
   <resultMap id="find" type="com.group.miShop.domain.entity.Banner">
-    <id property="bannerId" column="banner_id"></id>
+    <id property="bannerId" column="banner_id" ></id>
     <result property="bannerImage" column="banner_image"></result>
   </resultMap>
 
