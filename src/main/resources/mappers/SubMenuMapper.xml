@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.miShop.mapper.SubMenuMapper">
+
+    <resultMap id="findSubMenu" type="com.group.miShop.domain.entity.SubMenu">
+        <id property="subMenuId" column="sub_menu_id"></id>
+        <result property="subName" column="sub_name"></result>
+        <collection property="subMenu1List" ofType="com.group.miShop.domain.entity.SubMenu1">
+          <id property="subMenu1Id" column="sub_menu1_id"></id>
+          <result property="subName1" column="sub_name1"></result>
+          <result property="subMenu1ImageUrl" column="sub_menu1_image_url"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAllSubMenu" resultMap="findSubMenu">
+      SELECT  sm.sub_menu_id ,sm.sub_name,sm1.sub_name1,sm1.sub_menu1_image_url,
+      FROM sub_menu sm
+      LEFT JOIN sub_menu1 sm1 ON sm.sub_menu_id =sm1.sub_menu_id
+    </select>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.miShop.mapper.ShopMapper">
+
+
+  <resultMap id="findAllShop" type="com.group.miShop.domain.vo.ShopVo">
+    <id property="shopId" column="ship_id"></id>
+    <result property="shopName" column="shop_name"></result>
+    <result property="promotePrice" column="promote_price"></result>
+
+    <collection property="shopImageList" ofType="com.group.miShop.domain.entity.ShopImage">
+      <id property="shopImgId" column="shop_img_id"></id>
+      <result property="shopImg" column="shop_img"></result>
+      <result property="shopId" column="shop_id"></result>
+    </collection>
+  </resultMap>
+
+  <!-- 动态分页  使用bind-->
+  <select id="findShop" resultMap="findAllShop">
+    <bind name="browse" value="(page-1)*10"></bind>
+    SELECT s.shop_name,s.promote_price,simg.shop_img,simg.shop_id
+    FROM shop s
+    LEFT JOIN shop_image simg ON s.shop_id = simg.shop_id
+    WHERE s.status=1 AND s.shop_name like concat(concat('%',#{keyword}
+    ),'%')
+    limit #{browse},10
+  </select>
+
+</mapper>
