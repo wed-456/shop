@@ -1,9 +1,35 @@
 package com.group.miShop.controller;
 
-public class SearchController {
-    /**
-     * 商品的查询
-     */
+import com.group.miShop.service.SearchService;
+import com.group.miShop.utils.CateBean;
+import com.group.miShop.utils.Resoult;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
+
+@RestController
+@Slf4j
+@RequestMapping("/api")
+public class SearchController {
+    @Resource
+    SearchService searchService;
+    /**
+     * 商品的模糊查询
+     */
+    @GetMapping("/find")
+    public Resoult find(String keyWord,int page){
+        try {
+            CateBean cateBean = searchService.findSearch(keyWord, page);
+
+            return Resoult.success(cateBean);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+      return Resoult.error();
+    }
 
 }

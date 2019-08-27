@@ -15,7 +15,7 @@
     <!--  1. 配置连接池-->
     <!--  2.SqlSessionFactory  -->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean"
-          p:dataSource-ref="dataSource" p:typeAliasesPackage="com.group.domain"
+          p:dataSource-ref="dataSource" p:typeAliasesPackage="com.group.miShop.domain"
           p:configLocation="classpath:mybatis.xml"
           p:mapperLocations="classpath:/mappers/**/*.xml"/>
     <!--  配置数据库连接池对象-->
