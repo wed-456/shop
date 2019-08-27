@@ -9,7 +9,7 @@
     <result property="promotePrice" column="promote_price"></result>
 
     <collection property="shopImageList" ofType="com.group.miShop.domain.entity.ShopImage">
-      <id property="shopImgId" column="shop_img_id"></id>
+      <id property="shopImgId" column="shop_img_id" ></id>
       <result property="shopImg" column="shop_img"></result>
       <result property="shopId" column="shop_id"></result>
     </collection>

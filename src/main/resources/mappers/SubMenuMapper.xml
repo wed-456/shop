@@ -5,6 +5,7 @@
     <resultMap id="findSubMenu" type="com.group.miShop.domain.entity.SubMenu">
         <id property="subMenuId" column="sub_menu_id"></id>
         <result property="subName" column="sub_name"></result>
+
         <collection property="subMenu1List" ofType="com.group.miShop.domain.entity.SubMenu1">
           <id property="subMenu1Id" column="sub_menu1_id"></id>
           <result property="subName1" column="sub_name1"></result>
