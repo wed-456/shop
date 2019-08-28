@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.miShop.mapper.ShopCarMapper">
+
+  <!-- 一个用户对象对应多个购物车记录 一个购物车记录又对应一个商品记录 -->
+
+</mapper>

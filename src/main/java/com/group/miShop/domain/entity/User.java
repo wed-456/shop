@@ -1,6 +1,8 @@
 package com.group.miShop.domain.entity;
 
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -18,4 +20,6 @@ public class User {
     private Date createDate;
 
     private Integer status;
+
+    private List<ShopCar> shopCarList;
 }

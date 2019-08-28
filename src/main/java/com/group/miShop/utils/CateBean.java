@@ -2,8 +2,10 @@ package com.group.miShop.utils;
 
 import com.group.miShop.domain.entity.Banner;
 import com.group.miShop.domain.entity.Navigation;
+
 import com.group.miShop.domain.entity.SubMenu;
 import com.group.miShop.domain.vo.ShopVo;
+import com.group.miShop.domain.vo.UserVo;
 import lombok.Data;
 
 import java.util.List;
@@ -22,4 +24,9 @@ public class CateBean {
      * 商品包装
      */
     List<ShopVo> shopVoList;
+
+    /**
+     * 购物车包装
+     */
+    UserVo userVo;
 }

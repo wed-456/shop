@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group.miShop.mapper.ShopMapper">
 
-
+<!-- 动态分页 -->
   <resultMap id="findAllShop" type="com.group.miShop.domain.vo.ShopVo">
     <id property="shopId" column="ship_id"></id>
     <result property="shopName" column="shop_name"></result>
