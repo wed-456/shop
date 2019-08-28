@@ -5,6 +5,7 @@ import com.group.miShop.service.UserService;
 import com.group.miShop.utils.Resoult;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,8 @@ public class IoginController {
     /**
      * 登录
      */
-    @RequestMapping("login")
+
+    @PostMapping("/login")
     public Resoult login(String username,String password){
         User user = userService.findByName(username,password);
             if(user!=null ){
@@ -33,7 +35,7 @@ public class IoginController {
      * 注册
      */
 
-    @RequestMapping("register")
+    @RequestMapping("/register")
     public Resoult register(String username,String password){
         int rows = userService.register(username, password);
         if(rows!=0){

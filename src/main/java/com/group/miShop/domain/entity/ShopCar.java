@@ -1,6 +1,9 @@
 package com.group.miShop.domain.entity;
 
+import com.group.miShop.domain.vo.ShopVo;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ShopCar {
@@ -15,4 +18,6 @@ public class ShopCar {
     private Integer oid;
 
     private Integer status;
+
+
 }

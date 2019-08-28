@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="findAllSubMenu" resultMap="findSubMenu">
-      SELECT  sm.sub_menu_id ,sm.sub_name,sm1.sub_name1,sm1.sub_menu1_image_url,
+      SELECT  sm.sub_menu_id ,sm.sub_name,sm1.sub_name1,sm1.sub_menu1_image_url
       FROM sub_menu sm
       LEFT JOIN sub_menu1 sm1 ON sm.sub_menu_id =sm1.sub_menu_id
     </select>

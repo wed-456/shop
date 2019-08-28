@@ -18,4 +18,6 @@ public interface UserMapper {
      * @return
      */
     UserVo findShopCarById(int uid);
+
+
 }

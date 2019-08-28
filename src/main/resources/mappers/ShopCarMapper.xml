@@ -3,5 +3,45 @@
 <mapper namespace="com.group.miShop.mapper.ShopCarMapper">
 
   <!-- 一个用户对象对应多个购物车记录 一个购物车记录又对应一个商品记录 -->
+  <resultMap id="shopCar" type="ShopCar">
+    <id property="carId" column="car_id"></id>
+    <result property="number" column="number"></result>
+    <result property="shopId" column="shop_id"></result>
+  </resultMap>
+
+  <select id="findByUidShopId" resultMap="shopCar">
+    SELECT *
+    FROM shop_car sc
+    WHERE sc.uid=#{uid} AND sc.shop_id=#{shopId} AND sc.status=1
+  </select>
+
+  <update id="updateNumber" >
+    UPDATE shop_car sc
+    SET sc.number=#{number}
+    WHERE sc.uid=#{uid} AND sc.shop_id=#{shopId}
+  </update>
+
+  <insert id="insertShopCar">
+    INSERT INTO  shop_car sc
+    (sc.uid,sc.shop_id,sc.number)
+    VALUE (#{uid},#{shopId},#{number})
+  </insert>
+
+  <update id="falseDel">
+    UPDATE shop_car sc
+    SET sc.status=0
+    WHERE sc.car_id=#{carId};
+  </update>
+
+  <update id="updateByOp">
+    UPDATE shop_car sc
+    <if test="op != null and  op==1">
+      SET  sc.number = sc.number+1
+    </if>
+    <if test="op != null and op==2">
+      SET  sc.number = sc.number-1
+    </if>
+    WHERE sc.car_id=#{carId}
+  </update>
 
 </mapper>

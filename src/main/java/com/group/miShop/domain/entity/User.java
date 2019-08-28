@@ -22,4 +22,5 @@ public class User {
     private Integer status;
 
     private List<ShopCar> shopCarList;
+
 }

@@ -26,4 +26,11 @@
     limit #{browse},10
   </select>
 
+  <!--&lt;!&ndash; 根据商品id 查询 &ndash;&gt;-->
+  <!--<select id="findShopId" resultMap="findAllShop">-->
+    <!--SELECT s.shop_name, s.promote_price,simg.shop_img-->
+    <!--FROM shop s-->
+    <!--LEFT JOIN shop_image simg ON s.shop_id = simg.shop_id-->
+    <!--WHERE s.status=1-->
+  <!--</select>-->
 </mapper>
