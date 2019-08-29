@@ -22,4 +22,14 @@ public class SerchServiceImpl implements SearchService {
 
         return cateBean;
     }
+
+    @Override
+    public CateBean findSearchByName(String ShopName) {
+        CateBean cateBean = new CateBean();
+        List<ShopVo> shopVoList = shopMapper.findShopByShopName(ShopName);
+        cateBean.setShopVoList(shopVoList);
+        return cateBean;
+    }
+
+
 }

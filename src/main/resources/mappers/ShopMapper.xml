@@ -33,4 +33,23 @@
     <!--LEFT JOIN shop_image simg ON s.shop_id = simg.shop_id-->
     <!--WHERE s.status=1-->
   <!--</select>-->
+  <!-- 根据名字查询 -->
+  <resultMap id="findShopName" type="ShopVo">
+    <id property="shopId" column="shop_id"></id>
+    <result property="shopName" column="shop_name"></result>
+    <result property="promotePrice" column="promote_price"></result>
+    <result property="shopMsg" column="shop_msg"></result>
+    <result property="originalPrice" column="original_price"></result>
+    <collection property="shopImageList" ofType="com.group.miShop.domain.entity.ShopImage">
+      <id property="shopImgId" column="shop_img_id"></id>
+      <result property="shopImg" column="shop_img"></result>
+    </collection>
+  </resultMap>
+
+  <select id="findShopByShopName" resultMap="findShopName">
+    SELECT *
+    FROM shop s
+    LEFT JOIN shop_image image ON s.shop_id = image.shop_id
+    WHERE s.shop_name=#{shopName}
+  </select>
 </mapper>

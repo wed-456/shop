@@ -32,4 +32,17 @@ public class SearchController {
       return Resoult.error();
     }
 
+    /**
+     * 商品的名字查询
+     */
+    @GetMapping("/findByShopName")
+    public Resoult findByShopName(String shopName){
+        try {
+            CateBean cateBean = searchService.findSearchByName(shopName);
+            return Resoult.success(cateBean);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+        return Resoult.error();
+    }
 }

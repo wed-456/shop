@@ -19,4 +19,9 @@ public interface ShopMapper {
      */
 //    List<ShopVo> findShopId(@Param("shopId") Integer shopId);
 
+    /**
+     * 根据商品名字查询
+     */
+    List<ShopVo> findShopByShopName(@Param("shopName") String shopName);
+
 }

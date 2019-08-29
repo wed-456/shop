@@ -25,10 +25,17 @@ public interface ShopCarMapper {
     /**
      * 假删除购物车记录
      */
-    int falseDel(@Param("carId") int carId);
+    int falseDel(@Param("carId") Integer carId);
 
     /**
      * 通过操作值修改单个购物车记录的商品数量
      */
     int updateByOp(@Param("carId")int carId,@Param("op") int op);
+
+    /**
+     * 通过用户id查找购物车信息
+     * @param uid
+     * @return
+     */
+    List<ShopCar> findShopCarById(int uid);
 }

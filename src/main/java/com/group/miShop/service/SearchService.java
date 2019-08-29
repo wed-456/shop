@@ -12,4 +12,9 @@ public interface SearchService {
      * @return
      */
     CateBean findSearch(String keyword,int page);
+
+    /**
+     * 名字查询
+     */
+    CateBean findSearchByName(String ShopName);
 }

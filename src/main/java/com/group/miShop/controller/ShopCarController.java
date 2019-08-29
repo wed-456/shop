@@ -3,6 +3,7 @@ package com.group.miShop.controller;
 import com.group.miShop.domain.entity.ShopCar;
 import com.group.miShop.service.ShopCarService;
 import com.group.miShop.utils.CateBean;
+import com.group.miShop.utils.CateShopBean;
 import com.group.miShop.utils.Resoult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +26,8 @@ public class ShopCarController {
     @GetMapping("/shopCar")
     public Resoult findByUId(int uid){
         try{
-            CateBean cateBean = shopCarService.findByUId(uid);
-
-            return Resoult.success(cateBean);
+            CateShopBean cateShopBean = shopCarService.findByUId(uid);
+            return Resoult.success(cateShopBean);
         }catch (Exception e){
             log.error(e.getMessage());
         }
@@ -57,9 +57,9 @@ public class ShopCarController {
      * 假删除购物车记录
      */
     @GetMapping("/falseDel")
-    public Resoult Falsedel(int carId){
+    public Resoult falsedel(Integer carId){
         try{
-            int row = shopCarService.FalseDel(carId);
+            int row = shopCarService.falseDel(carId);
             if(row>0){
                 return Resoult.success(row);
             }

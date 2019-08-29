@@ -44,4 +44,28 @@
     WHERE sc.car_id=#{carId}
   </update>
 
+  <!-- 通过uid 找到购物车记录 -->
+  <resultMap id="find" type="ShopCar">
+    <id property="carId" column="car_id"></id>
+    <result property="number" column="number"></result>
+    <result property="shopId" column="shop_id"></result>
+    <collection property="shopVoList" ofType="com.group.miShop.domain.vo.ShopVo">
+      <id property="shopName" column="shop_name"></id>
+      <result property="shopMsg" column="shop_msg"></result>
+      <result property="promotePrice" column="promote_price"></result>
+      <collection property="shopImageList" resultMap="shopImg"></collection>
+    </collection >
+  </resultMap>
+
+  <resultMap id="shopImg" type="com.group.miShop.domain.entity.ShopImage">
+      <id property="shopImgId" column="shop_img_id"></id>
+      <result property="shopImg" column="shop_img"></result>
+  </resultMap>
+
+  <select id="findShopCarById" resultMap="find">
+    SELECT sc.car_id, sc.shop_id,sc.number,simg.shop_img,s.promote_price,shop_name,s.shop_msg,simg.status
+    FROM shop_car sc LEFT JOIN shop s ON sc.shop_id =s.shop_id
+    LEFT JOIN shop_image simg ON sc.shop_id = simg.shop_id
+    WHERE sc.uid=#{uid} AND sc.status=1;
+  </select>
 </mapper>

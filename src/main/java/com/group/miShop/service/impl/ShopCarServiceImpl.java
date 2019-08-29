@@ -1,52 +1,37 @@
 package com.group.miShop.service.impl;
 
 import com.group.miShop.domain.entity.ShopCar;
-import com.group.miShop.domain.vo.UserVo;
 import com.group.miShop.mapper.ShopCarMapper;
-import com.group.miShop.mapper.UserMapper;
 import com.group.miShop.service.ShopCarService;
-import com.group.miShop.utils.CateBean;
+import com.group.miShop.utils.CateShopBean;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Slf4j
 @Service("shopCarServiceImpl")
 public class ShopCarServiceImpl implements ShopCarService {
-    @Resource
-    UserMapper userMapper;
+
     @Resource
     ShopCarMapper shopCarMapper;
-    @Resource
 
 
     @Override
-    public CateBean findByUId(int uid) {
-        CateBean cateBean = new CateBean();
-        UserVo userVo = userMapper.findShopCarById(uid);
-        //如果没有登录，不可以使用，购物车没有商品，则不查询
+    public CateShopBean findByUId(int uid) {
+        //如果没有登录，不可以使用，购物车没有商品，则查询不了东西
         //获取用户所有的购物车信息
         //拿到商品id 查询出来
-        if(userVo!=null){
-            //装商品id
-            ArrayList<Integer> arrayList = new ArrayList();
-            List<ShopCar> shopCarList = userVo.getShopCarList();
-            for(int i=0;i<shopCarList.size();i++){
-                //有可能是多个
-               Integer shopId  = shopCarList.get(i).getShopId();
-               arrayList.add(shopId);
-            }
-            if(arrayList.size()>0){
-                for (int i = 0; i < arrayList.size(); i++) {
-                    Integer NewShopId = arrayList.get(i);
-
-                }
-            }
-            cateBean.setUserVo(userVo);
+        CateShopBean cateShopBean = new CateShopBean();
+        List<ShopCar> shopCarById = shopCarMapper.findShopCarById(uid);
+        if(shopCarById!=null && !shopCarById.isEmpty()){
+            cateShopBean.setShopCarList(shopCarById);
+            return cateShopBean;
         }
-        return cateBean;
+
+       return null;
     }
 
     /**
@@ -76,7 +61,7 @@ public class ShopCarServiceImpl implements ShopCarService {
      * @return
      */
     @Override
-    public int FalseDel(int carId) {
+    public int falseDel(Integer carId) {
         int row = shopCarMapper.falseDel(carId);
         if(row>0){
             return row;

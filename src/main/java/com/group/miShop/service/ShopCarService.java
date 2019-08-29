@@ -2,10 +2,11 @@ package com.group.miShop.service;
 
 import com.group.miShop.domain.entity.ShopCar;
 import com.group.miShop.utils.CateBean;
+import com.group.miShop.utils.CateShopBean;
 
 public interface ShopCarService {
 
-    CateBean findByUId(int uid);
+    CateShopBean findByUId(int uid);
 
     /**
      * 用户添加购物车商品，增加还是修改
@@ -20,7 +21,7 @@ public interface ShopCarService {
      * @param carId
      * @return
      */
-    int FalseDel(int carId);
+    int falseDel(Integer carId);
 
     /**
      * 购物车的商品修改（数量的增加和减少）

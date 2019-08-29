@@ -19,5 +19,5 @@ public class ShopCar {
 
     private Integer status;
 
-
+    private List<ShopVo> shopVoList;
 }

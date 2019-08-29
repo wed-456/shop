@@ -18,20 +18,5 @@
         INSERT INTO user  (user_name,password) VALUE (#{userName},#{password})
     </insert>
 
-    <!-- 通过uid 找到购物车记录 -->
-    <resultMap id="find" type="UserVo">
-        <id property="uid" column="uid"></id>
-        <result property="userName" column="username"></result>
-        <collection property="shopCarList" ofType="com.group.miShop.domain.entity.ShopCar">
-            <id property="carId" column="car_id"></id>
-            <result property="shopId" column="shop_id"></result>
-            <result property="number" column="number"></result>
-        </collection>
-    </resultMap>
-    <select id="findShopCarById" resultMap="find" >
-      SELECT u.uid,u.username,sc.shop_id,sc.car_id,sc.number
-      FROM user u LEFT JOIN shop_car sc ON u.uid=sc.uid
-        LEFT
-      WHERE u.uid=#{uid} AND u.status=1;
-    </select>
+
 </mapper>
