@@ -24,7 +24,7 @@ public class HeadController {
     @Resource
     HeadService headService;
 
-    @GetMapping("heads")
+    @GetMapping("/heads")
     public Resoult heads(){
         //导航接口
         try{

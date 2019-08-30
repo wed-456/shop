@@ -24,10 +24,14 @@ public class IoginController {
 
     @PostMapping("/login")
     public Resoult login(String username,String password){
-        User user = userService.findByName(username,password);
+        try{
+            User user = userService.findByName(username,password);
             if(user!=null ){
-                Resoult.success(user);
+               return Resoult.success(user);
             }
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
         return Resoult.error();
     }
 

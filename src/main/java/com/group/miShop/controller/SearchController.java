@@ -21,11 +21,13 @@ public class SearchController {
      * 商品的模糊查询
      */
     @GetMapping("/find")
-    public Resoult find(String keyWord,int page){
+    public Resoult find(String keyWord,String page){
         try {
-            CateBean cateBean = searchService.findSearch(keyWord, page);
-
-            return Resoult.success(cateBean);
+            int new_page = Integer.parseInt(page);
+            CateBean cateBean = searchService.findSearch(keyWord, new_page);
+            if(cateBean!=null){
+                return Resoult.success(cateBean);
+            }
         }catch (Exception e){
             log.error(e.getMessage());
         }

@@ -4,18 +4,18 @@
   <resultMap id="byUserName" type="com.group.miShop.domain.entity.User">
       <id property="uid" column="uid"></id>
       <result property="password" column="password"></result>
-      <result property="userName" column="user-name"></result>
+      <result property="userName" column="username"></result>
   </resultMap>
 
   <select id="findByUserName" resultMap="byUserName">
-      SELECT u.password,u.user_name
+      SELECT u.password,u.username
       FROM user u
-      where u.user_name = #{userName} And u.status=1
+      where u.username = #{userName} And u.status=1
   </select>
 
     <!-- -->
     <insert id="add" >
-        INSERT INTO user  (user_name,password) VALUE (#{userName},#{password})
+        INSERT INTO user  (username,password) VALUE (#{userName},#{password})
     </insert>
 
 
